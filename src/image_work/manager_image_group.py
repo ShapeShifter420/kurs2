@@ -117,3 +117,7 @@ class ImageProcessor:
     def frequency_filtering(self, filtration_purity:str):
         image_with_filter = image_work.frequency_filtering(self.image.image, int(filtration_purity))
         return self.image.save_image_plt(image_with_filter, f'pur{filtration_purity}')
+
+    def top_brait(self,image_url):
+        self.image.image = \
+            image_work.make_top_braight(self.image.image, Image(image_url).image)

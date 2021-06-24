@@ -92,9 +92,9 @@ def href_adapter(href):
 
 full_alg = [alg_model('task1', 'Преобразование Фурье'), alg_model('task2', 'Сложение изображений'), alg_model('task3', 'Выделение рамок')
             , alg_model('task4', 'Изменение цветового пространства'), alg_model('task5', 'Наложение Шума'),
-            alg_model('task6', 'Стенография'), alg_model('task7', 'Карандаш')]
+            alg_model('task6', 'Стенография'), alg_model('task7', 'Карандаш'), alg_model('task8', 'Рандом')]
 adapter = {'task1': 'frequency_filtering', 'task2': 'fold_images', 'task3': 'search_all_rectangles_of_color',
            'task4': 'new_color_space',
-           'task5': 'color_noize', 'task6': 'cipher', 'task7': 'pencel', 'alg1': 'get_color_spaces', 'alg2': 'get_default_color_range'}
+           'task5': 'color_noize', 'task6': 'cipher', 'task7': 'pencel', 'alg1': 'get_color_spaces', 'alg2': 'get_default_color_range','task8':'topbrait'}
 if __name__ == '__main__':
     init_keys()

@@ -79,7 +79,7 @@ def search_rectangles_of_color(image_for_processing: np.ndarray, color_range: li
     return image_for_processing, cords
 
 
-def darkening_colors(image: np.ndarray,  clean_areas_cords: list) -> np.ndarray:
+def darkening_colors(image: np.ndarray, clean_areas_cords: list) -> np.ndarray:
     mask = np.zeros(image.shape, dtype=np.uint8)
 
     for i in clean_areas_cords:
@@ -113,9 +113,9 @@ def crop_image_to_smaller(image_1: np.ndarray, image_2: np.ndarray) -> Tuple[np.
 
     if colonum1 != colonum2:
         if colonum1 > colonum2:
-            image_1 = _crop_image_to_smaller(image_1,  len(image_1), colonum2)
+            image_1 = _crop_image_to_smaller(image_1, len(image_1), colonum2)
         else:
-            image_2 = _crop_image_to_smaller(image_2,  len(image_2), colonum1)
+            image_2 = _crop_image_to_smaller(image_2, len(image_2), colonum1)
 
     return image_1, image_2
 
@@ -128,6 +128,14 @@ def add_image_light_pixel_rule(image_1: np.ndarray, image_2: np.ndarray) -> np.n
         px_1, px_2)
 
     return magic(image_1, image_2)
+
+
+def make_top_braight(image_1: np.ndarray, image_2: np.ndarray) -> np.ndarray:
+    image_1, image_2 = crop_image_to_smaller(image_1, image_2)
+    for line in range(len(image_1)):
+        for px in range(len(image_1[line])):
+            image_1[line][px][px % 3] = image_1[line][px][random.randint(0, 2)]
+    return image_1
 
 
 def frequency_filtering(image: np.ndarray, filtration_purity=60) -> np.ndarray:

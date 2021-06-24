@@ -131,6 +131,22 @@ async def post_cipher(image: ImageCipher):
         log_this(ex)
 
 
+@app.post('/api/topbrait')
+async def post_topbrite(images: Images):
+    try:
+        images = images.images
+
+        manager.load_image(images[0])
+
+        for image in images[1:]:
+            manager.top_brait(image)
+
+        return manager.save_image()
+
+    except Exception as ex:
+        log_this(ex)
+
+
 def server_run():
     uvicorn.run(app, host="127.0.0.1", port=8000)
 
